@@ -1,0 +1,697 @@
+
+{%load static%}
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<!-- Mirrored from demo.w3layouts.com/demos_new/template_demo/09-01-2018/lovely_pets-demo_Free/1144690614/web/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Dec 2020 06:31:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <title>DREAM GARDEN</title>
+
+  <link
+    rel="shortcut icon"
+    type="image/x-icon"
+    href="{% static 'img/favicon.ico'%}"
+  />
+
+	<!--meta tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="Lovely-pets Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--//meta tags ends here-->
+
+	<!--booststrap-->
+
+	<link href="{%static '/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all">
+	<!--//booststrap end-->
+
+	<!-- font-awesome icons -->
+	<link href="{%static 'css/font-awesome.css'%}" rel="stylesheet">
+	<!-- //font-awesome icons -->
+	<!--stylesheets-->
+	<link href="{%static 'css/style.css'%}" rel='stylesheet' type='text/css' media="all">
+	<!--//stylesheets-->
+	<link rel='stylesheet' type='text/css' href="{%static '/css/jquery.easy-gallery.css'%}">
+	<!-- For-gallery-CSS -->
+	<link href="{%static 'css/popuo-box.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<!-- //pop-ups-->
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<style>
+	.dropdown-item{
+		color: black;
+		padding-left: 1em;
+
+	}
+	.dropdown-item.hover
+	{
+		color: #c43e00;
+	}
+</style>
+</head>
+<meta name="robots" content="noindex">
+<body>
+
+
+	<div class="header-outs">
+		<div class="header-w3layouts">
+      
+			<!-- Navigation -->
+
+			<div class="header-bar">
+        
+				<nav class="navbar navbar-default">
+					<div class="navbar-header navbar-left">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					
+						<h1><a class="navbar-brand" href="">Dream<span class="fa fa-paw" aria-hidden="true"></span>Garden</a></h1>
+					
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+						<nav>
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="">Home</a></li>
+								
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Shop Items
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if user.is_superuser %}
+                    <a class="dropdown-item" href="{%url 'administrator:addpets'%}">Pets</a>
+           
+                    {%else%}
+                    <a class="dropdown-item" href="{%url 'user:view_pets'%}">Pets</a><br>
+                   
+                    {%endif%}
+                  </div>
+                </li>
+                <li>
+                {%if user.is_superuser%}
+                <a href="{%url 'administrator:viewsales_advert'%}"  class="nav-item nav-link">Sales Advert</a></li>
+                {%else%}
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sales Advert
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{%url 'user:dog_advert'%}">Dogs</a><br>  
+                  <a class="dropdown-item" href="{%url 'user:birds_advert'%}">Birds</a>
+               
+                  </div>
+                  {%endif%}
+                </li>
+                <li>
+			{%if user.is_superuser%}
+            <a href="{%url 'administrator:view_service'%}"  class="nav-item nav-link">Service</a></li>
+            {%else%}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Services
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{%url 'user:vetnary_service' %}">Vetnary Service</a>
+                  <a class="dropdown-item" href="{%url 'user:boarder_service' %}">Boarder Service</a>
+                  <a class="dropdown-item" href="{%url 'user:transport_service' %}">Transport Service</a>         
+                  <a class="dropdown-item" href="{%url 'user:grooming_service' %}">Grooming Service</a>
+                  <a class="dropdown-item" href="{%url 'user:walker_service' %}">Walker/sitter Service</a><br>
+                  <a class="dropdown-item" href="{%url 'user:trainer_service' %}">Dog Trainer Service</a>
+                </div>
+              </li>
+              {%endif%}
+
+
+              {% if user.is_superuser %}
+             <li><a href="{%url 'administrator:consultancy_request'%}" class="nav-item nav-link">Free-Consultancy</a></li>
+              {%else%}
+              <li><a href="{%url 'user:consultancy'%}" class="nav-item nav-link">Free-Consultancy</a></li>
+              {% endif %}
+              {% if user.is_authenticated %}
+             
+              <li class="nav-item dropdown">
+               
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{user.first_name}} <i class="far fa-user-circle"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                  <a class="nav-item navbar-link p-1 pr-4 font-style-5" href="{% url 'administrator:edit_profile' %}"style="color:black;">Edit Profile <i class="fas fa-edit"></i></a>
+                  <a class="nav-item navbar-link p-1 pr-4 font-style-5" href="{% url 'administrator:logout' %} " style="color:#c43e00; font-size:1.4em;">Logout <i class="fas fa-sign-out-alt"></i></a>
+                </div>
+              </li>
+              
+             
+              {%else%}
+            
+              <li><a href="{%url 'administrator:login'%}" class="nav-item nav-link">Login/Register</a></li>
+              {% endif %}
+             
+
+
+             
+            
+								
+			</ul>
+            </nav>
+            
+					</div>
+				</nav>
+			</div>
+      
+			<div class="clearfix"> </div>
+
+		</div>
+		{% if messages %}
+		{% for message in messages %}
+		 {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+	  
+		{% endfor %}
+	  
+	  {% endif %}
+  
+		<!-- Slideshow 4 -->
+		<div class="slider">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider4">
+					<li>
+						<div class="slider-img">
+							<div class="container">
+								<div class="slider-info">
+									<h4><span class="home-banner">O</span>ur<span class="home-banner">A</span>wesome <span class="home-banner">P</span>ets
+										<span class="fa fa-paw paw-banner" aria-hidden="true"></span><span class="fa fa-paw paw-banner" aria-hidden="true"></span></h4>
+									<p>Join Our Crew</p>
+									<div class="outs_more-buttn">
+										<a href="#" data-toggle="modal" data-target="#myModal">Register</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="slider-img ">
+							<div class="container">
+								<div class="slider-info">
+									<h4><span class="home-banner">L</span>ovely And <span class="home-banner">C</span>ute <span class="home-banner">P</span>ets
+										<span class="fa fa-paw paw-banner" aria-hidden="true"></span><span class="fa fa-paw paw-banner" aria-hidden="true"></span>										</h4>
+									<p>Join Our Crew</p>
+									<div class="outs_more-buttn">
+										<a href="#" data-toggle="modal" data-target="#myModal">Register</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<!-- This is here just to demonstrate the callbacks -->
+		<!-- <ul class="events">
+      <li>Example 4 callback events</li>
+    </ul>-->
+		<!-- //banner -->
+		<!-- modal -->
+		<div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Register</h4>
+					</div>
+					<div class="modal-body">
+						<div class="out-info">
+							<div class="letter-w3ls">
+
+								<form action="administrators/register/" method="post">
+									{% csrf_token %}  
+									<div class="form-add-to-w3ls add">
+
+										<input type="text" name="name" placeholder="Name" required="">
+										<div class="clear"></div>
+									</div>
+
+
+									<div class="main">
+										<div class="form-left-to-w3l">
+
+											<input type="email" name="email" placeholder="Email" required="">
+											<div class="clear"></div>
+										</div>
+										<div class="form-right-to-w3ls">
+
+											<input type="text" name="contact" placeholder="Phone Number" required="">
+											<div class="clear"></div>
+										</div>
+									</div>
+									
+
+
+									<div class="form-add-to-w3ls add">
+
+										<input type="text" name="password" placeholder="Password" required="">
+										<div class="clear"></div>
+									</div>
+
+									<div class="form-add-to-w3ls add">
+
+										<input type="text" name="password1" placeholder="Confirm Password" required="">
+										<div class="clear"></div>
+									</div>
+									
+									<div class="btnn">
+										<button type="submit">Submit</button><br>
+									</div>
+
+								</form>
+							</div>
+						</div>
+						<!--//register form-->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //modal -->
+	<!--About-->
+	<div class="about" id="about">
+		<div class="container">
+			<!---728x90--->
+
+			<div class="about-top-grids">
+				<div class="col-md-7 about-top-grid">
+					<h2>About Us </h2>
+					<!---728x90--->
+					<div class="arrow">
+						<ul>
+							<li><span class="fa fa-paw dog-arrow" aria-hidden="true"></span>
+								<p>Good And Pure Breed</p>
+							</li>
+							<li><span class="fa fa-paw dog-arrow" aria-hidden="true"></span>
+								<p>Active And Playful</p>
+							</li>
+							<li><span class="fa fa-paw dog-arrow" aria-hidden="true"></span>
+								<p>Will Be The Best Companion </p>
+							</li>
+							
+						</ul>
+					</div>
+					<div class="about-para">
+						<p>An avant-grade integrated farm in erode offering all breeds of dogs at very reasonable price, we also supply live duck, pure aseel and fish for meat purpose. For apartment pet lovers we have all breeds rabbits. We offer your lovely pets with complete care and instruction.</p>
+					</div>
+				</div>
+				
+				<div class="clearfix"> </div>
+			</div>
+			<!---728x90--->
+		</div>
+	</div>
+	<!--//About-->
+	<!--services-->
+	<div class="services" id="services">
+		<div class="container">
+      
+			<h3 class="title clr">Services</h3>
+
+			<div class="banner-bottom-girds ">
+				<div class="col-md-4  col-sm-6 col-xs-6  its-banner-grid">
+					<div class=" left-icon-grid">
+						<span class="fa fa-medkit banner-icon" aria-hidden="true"></span>
+					</div>
+					<div class=" white-shadow">
+						<a href="{%url 'user:vetnary_service' %}"><h4>Veterinary <br>Service</h4></a>
+						
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="col-md-4  col-sm-6 col-xs-6  its-banner-grid">
+					<div class=" left-icon-grid">
+						<span class="fa fa-home  banner-icon" aria-hidden="true"></span>
+					</div>
+					<div class=" white-shadow">
+						<a href="{%url 'user:boarder_service' %}"><h4>Boarder<br>Service</h4></a>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="col-md-4  col-sm-6 col-xs-6  its-banner-grid">
+					<div class=" left-icon-grid">
+						<span class="fa fa-car banner-icon" aria-hidden="true"></span>
+					</div>
+					<div class=" white-shadow">
+						<a href="{%url 'user:transport_service' %}"><h4>Transport<br>Service</h4></a>
+					
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6  its-banner-grid">
+					<div class=" left-icon-grid">
+						<span class="fa fa-scissors banner-icon" aria-hidden="true"></span>
+					</div>
+					<div class="white-shadow">
+						<a href="{%url 'user:grooming_service' %}"><h4>Grooming<br>Service</h4></a>
+						
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-4  col-sm-6 col-xs-6  its-banner-grid">
+					<div class="left-icon-grid">
+						<span class="fa fa-blind banner-icon" aria-hidden="true"></span>
+					</div>
+					<div class=" white-shadow">
+						<a href="{%url 'user:walker_service' %}"><h4>Walker<br>Service</h4></a>
+						
+						<div class="clearfix"> </div>
+					</div>
+				</div>	
+				<div class="col-md-4 col-sm-6 col-xs-6  its-banner-grid">
+					<div class=" left-icon-grid">
+						<span class="fa fa-clock-o banner-icon" aria-hidden="true"></span>
+					</div>
+					<div class=" white-shadow">
+						<a href="{%url 'user:trainer_service' %}"><h4>Trainer<br>Service</h4></a>
+						
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//services-->
+
+	<!--contact-->
+	<div class="contact" id="contact">
+		<div class="container">
+			<h3 class="title clr">Contact</h3>
+			<div class=" col-md-8 col-sm-8 col-xs-7 contact-map">
+				<div class="map-grid">
+					<a href="https://www.google.com/maps?q=11.3054541,77.5421197&z=17&hl=en"><i class="fa fa-home">	Directions</i></a>			
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.0634402669416!2d77.53993101480552!3d11.305454091963849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDE4JzE5LjYiTiA3N8KwMzInMzEuNiJF!5e1!3m2!1sen!2sin!4v1609905454649!5m2!1sen!2sin" ></iframe>
+				
+
+				</div>
+			</div>
+
+			<div class=" col-md-4 col-sm-4 col-xs-5 contact-icons">
+				<div class="footer_grid_left">
+					<h5>Address</h5>
+					<p>
+						9/5B, Thulukkappalayam
+						Thuduppathy
+						Perundurai- 638057
+					</span></p>
+				</div>
+				<div class="footer_grid_left">
+					<h5> Contact Us</h5>
+					<p>8072087306 </p>
+				</div>
+				<div class="footer_grid_left">
+					<h5>Email Us</h5>
+					<p><a href="mailto:dreamgardenpets@gmail.com">dreamgardenpets@gmail.com</a>
+					
+				</div>
+				<div class="footer_grid_left">
+					<h5>Times</h5>
+					<p>Mon-Sat:9AM to 6PM
+						<span>Sun:9AM to 7PM</span></p>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+
+				<div class="clearfix"> </div>
+		</div>
+	</div>
+	<div class="buttom-w3">
+		<div class="container">
+			<div class="col-md-12 bottom-head text-center">
+				<h4><a href="">DREAM GARDEN</a></h4>
+				<div class="pet-cat">
+					<p>When I need a Hand,You Gave Your Pawww...<span class="fa fa-paw dog-arrow" aria-hidden="true"></span></p>
+				</div>
+			</div>
+			
+			
+			<div class="clearfix"> </div>
+		</div>
+
+	</div>
+	
+	<footer class="page-footer font-small  bg-dark  pt-4">
+
+		<!-- Footer Links -->
+		<div class="container text-center text-md-left">
+	  
+		  <!-- Grid row -->
+		  <div class="row">
+	  
+			<!-- Grid column -->
+			<div class="col-md-4 mx-auto">
+	  
+			  <!-- Content -->
+			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">DREAMGARDEN</h5>
+			  <p>Properiter    Jaganathan K</p>
+	  
+			</div>
+			<!-- Grid column -->
+	  
+		
+			<br>
+			<!-- Grid column -->
+			<div class="col-md-2 mx-auto">
+	  
+			  <!-- Links -->
+			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Shop</h5>
+	  
+			  <ul class="list-unstyled">
+				<li>
+				  <a href="{%url 'user:view_pets'%}">PETS</a>
+				</li>
+				<li>
+				  <a href="{%url 'user:view_accessories'%}">Accessories</a>
+				</li>
+				<li>
+			  </ul>
+	  
+			</div>
+			<!-- Grid column -->
+	  
+		
+	  
+			<!-- Grid column -->
+			<div class="col-md-2 mx-auto">
+	  
+			  <!-- Links -->
+			  <br>
+			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Advert</h5>
+	  
+			  <ul class="list-unstyled">
+				<li>
+				  <a href="{%url 'user:birds_advert'%}">Birds</a>
+				</li>
+				<li>
+				  <a href="{%url 'user:dog_advert'%}">Dogs</a>
+				</li>
+				<li>
+				  <a href="{%url 'user:consultancy'%}">Ask Consultancy Advices</a>
+				</li>
+			   
+			  </ul>
+	  
+			</div>
+			<!-- Grid column -->
+	  
+	  
+			<!-- Grid column -->
+			<div class="col-md-2 mx-auto">
+	  
+			  <!-- Links -->
+			  <br>
+			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Services</h5>
+	  
+			  <ul class="list-unstyled">
+				<li>
+				  <a href="{%url 'user:vetnary_service' %}">Vetnary</a>
+				</li>
+				<li>
+				  <a href="{%url 'user:boarder_service' %}">Boarding </a>
+				</li>
+				<li>
+				  <a href="{%url 'user:transport_service' %}">Transport</a>
+				</li>
+				<li>
+				  <a href="{%url 'user:grooming_service' %}">Grooming </a>
+				</li>
+				<li>
+				  <a href="{%url 'user:walker_service' %}">Walker/sitter </a>
+				</li>
+				<li>
+				  <a href="{%url 'user:trainer_service' %}">Dog Training</a>
+				</li>
+			  </ul>
+	  
+			</div>
+			<!-- Grid column -->
+	  
+		  </div>
+		  <!-- Grid row -->
+	  
+		</div>
+		<!-- Footer Links -->
+	  
+	  
+	
+	  
+		<!-- Social buttons -->
+		<br><br>
+		<ul class="list-unstyled list-inline text-center">
+			<li class="list-inline-item">
+			  <a class="btn-floating btn-fb mx-1">
+			  <a href="https://instagram.com/jaga1601?igshid=1nuiailfopgrz" > <i class="fab fa-facebook-f"> </i></a>
+			  </a>
+			</li>
+		
+			<li class="list-inline-item">
+			  <a class="btn-floating btn-li mx-1">
+				<a href="https://instagram.com/jaga1601?igshid=1nuiailfopgrz" >  <i class="fab fa-instagram"> </i></a>
+			  </a>
+			</li>
+			<li class="list-inline-item">
+			  <a class="btn-floating btn-dribbble mx-1">
+				<a href="https://www.youtube.com/channel/UC4SwClB9Pf1CDKawJGB14tQ">
+				<i class="fab fa-youtube"> </i>
+				</a>
+			  </a>
+			</li>
+		  </ul>
+		<!-- Social buttons -->
+		
+		<!-- Copyright -->
+		<br>
+		<p>© 2020 Copyright:Designed by JKR
+		</p>
+		<!-- Copyright -->
+	  
+	  </footer>
+
+	<!--js working-->
+	<script type='text/javascript' src="{%static 'js/jquery-2.2.3.min.js'%}"></script>
+	<script src="{%static 'js/bootstrap.js'%}"></script>
+	<!-- //js  working-->
+
+	<script src="{%static 'js/responsiveslides.min.js'%}"></script>
+
+	<script>
+		// You can also use "$(window).load(function() {"
+		$(function () {
+			// Slideshow 4
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: false,
+				nav: true,
+				speed: 900,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+
+		});
+	</script>
+	<!--// banner-->
+	<!--pop-up-box video-->
+	<script src="{%static 'js/jquery.magnific-popup.js'%}" type="text/javascript"></script>
+	<script>
+		$(document).ready(function () {
+			$('.popup-with-zoom-anim').magnificPopup({
+				type: 'inline',
+				fixedContentPos: false,
+				fixedBgPos: true,
+				overflowY: 'auto',
+				closeBtnInside: true,
+				preloader: false,
+				midClick: true,
+				removalDelay: 300,
+				mainClass: 'my-mfp-zoom-in'
+			});
+
+		});
+	</script>
+	<!-- //pop-up-box video -->
+
+	<!-- script for portfolio -->
+	<script type='text/javascript' src="{%static 'js/jquery.easy-gallery.js'%}"></script>
+	<script type='text/javascript'>
+		//init Gallery
+		$('.portfolio').easyGallery();
+	</script>
+	<script src="{%static 'js/easyResponsiveTabs.js'%}" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#horizontalTab').easyResponsiveTabs({
+				type: 'default', //Types: default, vertical, accordion           
+				width: 'auto', //auto or any width like 600px
+				fit: true // 100% fit in a container
+			});
+		});
+	</script>
+	<!-- //script for portfolio -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="{%static 'js/move-top.js'%}"></script>
+	<script type="text/javascript" src="{%static 'js/easing.js'%}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+
+	<!-- for-bottom-to-top smooth scrolling -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<!-- //for-bottom-to-top smooth scrolling -->
+
+
+</body>
+
+
+<!-- Mirrored from demo.w3layouts.com/demos_new/template_demo/09-01-2018/lovely_pets-demo_Free/1144690614/web/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Dec 2020 06:32:12 GMT -->
+</html>
