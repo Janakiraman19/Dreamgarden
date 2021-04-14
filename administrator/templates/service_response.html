@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+<div class="d-md-flex h-md-100">
+    <!-- First Half -->
+
+    <div class="col-md-6 p-0 h-md-90">
+      <div
+        class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+      >
+        <div class="logoarea pt-5 pb-5">
+          <img src="{%static 'img/col/DG LOGO.png'%}  " class="img-fluid" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Half -->
+
+    <div class="col-md-6 bg-white">
+      <center>
+        <img
+          src="{%static 'img/col/DG LOGO black fade.png'%} "
+          height="100px"
+          width="100px"
+        />
+        <h2>Service Response</h2>
+      </center>
+     
+      <form class="form" method="POST"action="service_mail/{{email.id}}" >
+        {% csrf_token %}  
+        <label>TO</label><br>
+        <input type="text"  value="{{email.customer.email}}"name="to" class="form-control">
+        <label>You May Visit Them For Better Service </label>
+        <textarea class="form-control h-25" rows="5" placeholder="Raise Your Problem Here..."name="reply"></textarea>
+        <br><br>
+        <center>  <button type="submit" class="btn btn-success">Send</button>
+        <br><br><br><br><br>
+        </form>
+        </div>
+        </div>
+{%endblock%}

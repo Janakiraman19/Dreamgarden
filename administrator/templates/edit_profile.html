@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+
+    <div class="d-md-flex h-md-100">
+      <!-- First Half -->
+
+      <div class="col-md-6 p-0 h-md-90">
+        <div
+          class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+        >
+          <div class="logoarea pt-5 pb-5">
+            <img src="{%static 'img/col/DG LOGO.png'%} " class="img-fluid" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Half -->
+
+      <div class="col-md-6 bg-white">
+        <center>
+          <img
+            src="{%static 'img/col/DG LOGO black fade.png'%} "
+            height="100px"
+            width="100px"
+          />
+        </center>
+        <form method="POST" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div>
+              {% for message in messages %}
+              <h4 style="color: #c43e00;">{{message}}</h4>
+            
+              {% endfor %}
+              </div>
+              
+              <label>Name</label><br />
+              <input type="text" name="first_name" value="{{user.first_name}}" class='form-control'required>
+              <br />
+              <label>Email</label><br />
+              <input type="email" name="email" value="{{user.email}} "class='form-control' required>
+              <br />
+              <label>Contact Number</label><br />
+              <input type="text" name="last_name" class='form-control' value="{{user.last_name}}"required><br>
+              Password<br>
+             <b> No password set.</b><br>
+            <div style="font-size: small;"> Raw passwords are not stored, so there is no way to see this user’s password, but you can change the password using this form.<br><br></div>
+            <a href="{% url 'administrator:change_password'%}" class="btn btn-info">Change Password</a>
+            <input type="submit" class="btn btn-success" value='Update'>
+        </form>
+      </div>
+    </div>
+  {%endblock%}

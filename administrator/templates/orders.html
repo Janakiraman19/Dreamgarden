@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 bg-img py-5 text-center text-light">
+            <h1>Orders</h1>
+        </div>
+        &ensp;&ensp;&ensp;&ensp;&ensp;    <p>From : <input type="date"> To :  <input type="date"></p>&ensp;<button class="btn btn-success">Search</button>
+      
+        <div class="col-md-12 alert alert-primary">
+            <br>
+            {% for i in order_history %}
+                <div class="card my-5">
+                    <div class="card-header">
+                        <strong class="float-left">Order ID: {{i.order_id}}</strong>
+                        <em class="float-right">Processed On:{{i.date}}</em>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover table-striped">
+                       
+                        {% for j in i.products %}
+                            
+                            <tr>
+                                
+                                <td>
+                                    <img src="/static/media/{{j.image}}" style="height:100px;width:200px;" alt="No Image">
+                                </td>
+                                <td><h4>{{i.cust_id.first_name}}</h4></td>
+                                <td><h4>{{j.petname}}</h4></td>
+                                <td><h4>{{j.breedname}}</h4></td>
+                                <td>&#8377; {{j.price}}</td>
+                                <td><a href="{{j.id}}"  target="_blank" class="btn btn-success"><i class="fa fa-eye"></i> View</a></td>
+                            </tr>
+                        
+                        {% endfor %}
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <table class="table">
+                            <tr>
+                                <th>Total Amount</th>
+                                <td>{{i.total_amount}}</td>
+                                
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
