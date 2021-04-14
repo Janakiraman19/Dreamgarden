@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+    <div class="d-md-flex h-md-100">
+      <!-- First Half -->
+
+      <div class="col-md-6 p-0 h-md-90">
+        <div
+          class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+        >
+          <div class="logoarea pt-5 pb-5">
+            <img src="{%static 'img/advert/walker.jpg'%}  " class="img-fluid" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Half -->
+
+      <div class="col-md-6 bg-white">
+        <center>
+          <img
+            src="{%static 'img/col/DG LOGO black fade.png'%} "
+            height="100px"
+            width="100px"
+          />
+        <h2>Advertise yourself as Walker/Sitter</h2>
+        </center>
+        <form class="form" action="#"  method="POST">
+          {% csrf_token %}  
+          <label>Name</label>
+          <input type="text" name="days" class="form-control">
+          <label>Email-ID</label>
+          <input type="email" name="days" class="form-control">
+          <label>Contact Number</label>
+          <input type="text" name="days" class="form-control">
+          <label>Location</label><br>
+          <input type="text" name="age" class="form-control">
+          <label>Timing</label><br>
+          <input type="text" name="age" class="form-control">
+          <label>Walking Hours Per Day</label>
+          <input type="text" name="age" class="form-control">
+          <label>Address Proof</label><br>
+          <input type="file"name="vedio">
+
+          <center>  <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+       
+      </div>
+    </div>
+{%endblock%}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+    <div class="d-md-flex h-md-100">
+      <!-- First Half -->
+
+      <div class="col-md-6 p-0 h-md-90">
+        <div
+          class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+        >
+          <div class="logoarea pt-5 pb-5">
+            <img src="{%static 'img/advert/vetnary.jpg'%}  " class="img-fluid" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Half -->
+
+      <div class="col-md-6 bg-white">
+        <center>
+          <img
+            src="{%static 'img/col/DG LOGO black fade.png'%} "
+            height="100px"
+            width="100px"
+          />
+          <h2>Vetnary </h2>
+        </center>
+
+        <form class="form" enctype="multipart/form-data"  method="POST">
+          {% csrf_token %}  
+          <input type="hidden" name="service_type" value="Vetnary">
+          <label >Pet</label><br />
+          <input type="text" name="pet" class="form-control">
+          <label >Breed</label><br />
+          <input type="text" name="breed" class="form-control">
+          <br>
+          <label>Age</label><br>
+          <input type="text" name="age" class="form-control">
+          <label>Problem Description</label><br>
+         <textarea class="form-control" name="problem_description"></textarea>
+          <label>Location</label>
+          <input type="text" name="address" class="form-control">
+          <br>
+          <label>Upload Medication Record</label><br>
+          <input type="file" name="medication_record" /><br /> 
+          <center>  <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+       
+      </div>
+    </div>
+ {%endblock%}

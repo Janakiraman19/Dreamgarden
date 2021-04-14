@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+    <div class="d-md-flex h-md-100">
+      <!-- First Half -->
+
+      <div class="col-md-6 p-0 h-md-90">
+        <div
+          class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+        >
+          <div class="logoarea pt-5 pb-5">
+            <img src="{%static 'img/advert/boarder_advert.jpg'%}  " class="img-fluid" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Half -->
+
+      <div class="col-md-6 bg-white">
+        <center>
+          <img
+            src="{%static 'img/col/DG LOGO black fade.png'%} "
+            height="100px"
+            width="100px"
+          />
+        </center>
+        <form class="form"  method="POST">
+          {% csrf_token %}  
+          <h2>Boarders Services</h2>
+          <input type="hidden" name="service_type" value="Boarder">
+          <label>PETS</label>
+          <input type="text" name="pet" class="form-control">
+          <br />
+          <label for="sel2">Breed</label><br />
+          <input type="text" name="breed" class="form-control">
+          <br>
+          <label>Age</label><br>
+          <input type="text" name="age" class="form-control">
+          <label>Address</label><br>
+          <input type="text" name="address" class="form-control">
+          <label>Diet Plan</label><br>
+          <select class="form-control" name="diet_plan">
+            <option>Weight Loss</option>
+            <option>Muscle Builder</option>
+            <option>Maintanence Diet</option>
+           </select>
+           <br>
+          <label>Boarding Days</label>
+          <input type="text" name="boarding_days" class="form-control">
+          <br>
+          
+          <br>
+          <label>Basic Training Needed?</label>
+          <div class="form-check form-check-inline">
+            <input type="radio" id="yes" name="basic_training" value="yes" checked>
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="basic_training" value="no" checked>
+            <label for="no">No</label>
+            
+          <br>
+          </div>
+          <br>
+          <label>Include Supplement</label>
+          <div class="form-check form-check-inline">
+            <input type="radio" id="yes" name="include_supplement" value="yes" checked>
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="include_supplement" value="no" checked>
+            <label for="no">No</label>
+            
+          <br>
+          </div>
+        <center>  <button type="submit" class="btn btn-success">Submit</button></center>
+          </div>
+        </form>
+       
+      </div>
+    </div>
+{%endblock%}

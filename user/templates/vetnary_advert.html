@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+    <div class="d-md-flex h-md-100">
+      <!-- First Half -->
+
+      <div class="col-md-6 p-0 h-md-90">
+        <div
+          class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+        >
+          <div class="logoarea pt-5 pb-5">
+            <img src="{%static 'img/advert/vetnary.jpg'%}  " class="img-fluid" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Half -->
+
+      <div class="col-md-6 bg-white">
+        <center>
+          <img
+            src="{%static 'img/col/DG LOGO black fade.png'%} "
+            height="100px"
+            width="100px"
+          />
+          <h2>Get Your Patients Here..!</h2>
+        </center>
+        <form class="form" enctype="multipart/form-data"  method="POST">
+          {% csrf_token %}  
+          <input type="hidden" name="advert_type" value="Vetnary">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control">
+          <label>Email-ID</label>
+          <input type="email" name="email" class="form-control">
+          <label>Contact Number</label>
+          <input type="text" name="contact" class="form-control"> 
+          <label>Location</label><br>
+          <input type="text" name="location" class="form-control">
+          <label>Degree</label><br>
+          <input type="text" name="degree" class="form-control">
+          
+          <label>Specialist For</label><br>
+          <input type="text" name="specialist_for" class="form-control">
+          <label>Door Step Service</label>
+          <select class="form-control" name="door_step">
+            <option>Not Available</option>
+            <option>Available</option>
+           </select>
+           <br>
+           <label>Vetnary Council Of India Registration Certificate</label><br>
+           <input type="file" name="certificate">
+            <center>  <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+       
+      </div>
+    </div>
+ {%endblock%}

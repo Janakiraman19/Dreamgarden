@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+<div class="d-md-flex h-md-100">
+    <!-- First Half -->
+
+    <div class="col-md-6 p-0 h-md-90">
+      <div
+        class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+      >
+        <div class="logoarea pt-5 pb-5">
+          <img src="{%static 'img/advert/achu.jpeg'%}  " class="img-fluid" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Half -->
+
+    <div class="col-md-6 bg-white">
+      <center>
+        <img
+          src="{%static 'img/col/DG LOGO black fade.png'%} "
+          height="100px"
+          width="100px"
+        />
+      </center>
+      <h2>Confirm Your Order</h2>
+      <form method="POST">
+        {% csrf_token %} 
+        <label>Name</label> 
+        <input type="type" name="name" class="form-control" value="{{user.first_name}}">
+        <label>E-mail-Id</label> 
+        <input type="email" name="email" class="form-control" value="{{user.email}}">
+        <label>Mobile</label> 
+        <input type="type" name="num" class="form-control" value="{{user.last_name}}">
+        <label>Pet</label><br>
+        <input type="text" name="pet" value="{{i.id}},{{i.petname}},{{i.breedname}},{{i.price}}" class="form-control">
+        <label>House No</label><br>
+        <input type="text" name="no" class="form-control">
+        <label>Street</label><br>
+        <input type="text" name="street" class="form-control">
+        <label>Area/Colony Name</label><br>
+        <input type="text" name="area" class="form-control">
+        <label>City</label><br>
+        <input type="text" name="city" class="form-control">
+        <label>Country</label><br>
+        <input type="text" name="country" class="form-control">
+        <label>Pin code</label><br>
+        <input type="text" name="pin" class="form-control">
+
+        <br><br>
+        <center>  <button type="submit" class="btn btn-success">Submit</button>
+        <br>
+        </form>
+        </div>
+        </div>
+{%endblock%}

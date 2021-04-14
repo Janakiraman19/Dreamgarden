@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+    <div class="d-md-flex h-md-100">
+      <!-- First Half -->
+
+      <div class="col-md-6 p-0 h-md-90">
+        <div
+          class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+        >
+          <div class="logoarea pt-5 pb-5">
+            <img src="{%static 'img/advert/trained.jpg'%}  " class="img-fluid" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Half -->
+
+      <div class="col-md-6 bg-white">
+        <center>
+          <img
+            src="{%static 'img/col/DG LOGO black fade.png'%} "
+            height="100px"
+            width="100px"
+          />
+        </center>
+        <form class="form" action="#"  method="POST">
+          {% csrf_token %}  
+          <input type="hidden" name="service_type" value="Dog_trainer">
+          
+          <label>Breed</label><br />
+          <input type="text" name="breed" class="form-control">
+          <br>
+          <label>Age</label><br>
+          <input type="text" name="age" class="form-control">
+          <label>Location</label><br>
+          <input type="text" name="address" class="form-control">
+          <label>Training type</label>
+          <select class="form-control" name="training_type">
+            <option>Basic</option>
+            <option>Amature</option>
+            <option>Guard Training</option>
+            <option>Show Training</option>
+          </select>
+          <br />
+          <label>Other</label><br>
+          <select class="form-control" name="other">
+            <option>Home Training</option>
+            <option>Boarding & Training</option>
+            
+          </select>
+
+         <br><br><br>
+          <center>  <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+       
+      </div>
+    </div>
+ {%endblock%}

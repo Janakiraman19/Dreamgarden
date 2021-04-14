@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+
+
+    <div class="d-md-flex h-md-100">
+      <!-- First Half -->
+
+      <div class="col-md-6 p-0 h-md-90">
+        <div
+          class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+        >
+          <div class="logoarea pt-5 pb-5">
+            <img src="{%static 'img/advert/yori.jpg'%}  " class="img-fluid" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Half -->
+
+      <div class="col-md-6 bg-white">
+        <center>
+          <img
+            src="{%static 'img/col/DG LOGO black fade.png'%} "
+            height="100px"
+            width="100px"
+          />
+          <h2>Edit Pets</h2>
+        </center>
+
+        
+        <center><a href="{%url 'user:view_pets'%}">  <button  class="btn btn-success">View Pets</button></a></center><br>
+       
+        <form method="POST" enctype="multipart/form-data" >
+          {%csrf_token%}
+          <div class="form-group">
+            <br>
+            <input type="hidden" name="product_type" value="pet">
+            <label>PETS</label>
+            <select class="form-control"name="petname" id="sel1" onchange="giveSelection(this.value)" required="required">
+              <option value="">Select Pet</option>
+              {% for results in showpets %}
+              
+              <option value="{{ results.petname}}">{{ results.petname}}</option>
+              {% endfor %}
+            </select>
+              <br />
+            
+            <label>Breeds</label>
+            <select class="form-control" name="breedname"  id="sel2" required="required">
+              <option data-option="">Choose Breed</option>
+              {% for results1 in showbreeds %}
+              
+              <option data-option="{{ results1.petname}}">{{ results1.breedname}}</option>
+             
+              {% endfor %}
+              </select>
+              <script type="text/javascript">
+                var sel1 = document.querySelector('#sel1');
+                var sel2 = document.querySelector('#sel2');
+                var options2 = sel2.querySelectorAll('option');
+                
+                function giveSelection(selValue) {
+                  sel2.innerHTML = '';
+                  for(var i = 0; i < options2.length; i++) {
+                    if(options2[i].dataset.option === selValue) {
+                      sel2.appendChild(options2[i]);
+                    }
+                  }
+                }
+                
+                giveSelection(sel1.value);
+                </script>
+            <label>Age</label>
+            <input type="text" id="age" class="form-control" name="age">
+            
+            <label>Quantity</label>
+            <input type="text" id="quantity" class="form-control" name="quantity">
+            <label>Description</label>
+            <textarea class="form-control h-25" rows="5" name="product_description" placeholder="Present Your Description..."></textarea>
+            <label>Image</label><br />
+            <input type="file" name="image" /><br />
+            <label>Image</label><br />
+            <input type="file" name="image1" /><br />
+            <label>Image</label><br />
+            <input type="file" name="image2" /><br />
+            <br />
+            <label>Price</label><br />
+            <input type="text" class="form-control" name="price" /><br>
+           <center><button type="submit" class="btn btn-success">Submit</button></center>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+ {%endblock%}

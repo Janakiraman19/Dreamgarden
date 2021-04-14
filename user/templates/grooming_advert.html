@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+    <div class="d-md-flex h-md-100">
+      <!-- First Half -->
+
+      <div class="col-md-6 p-0 h-md-90">
+        <div
+          class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center"
+        >
+          <div class="logoarea pt-5 pb-5">
+            <img src="{%static 'img/advert/groomer.jpg'%}  " class="img-fluid" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Half -->
+
+      <div class="col-md-6 bg-white">
+        <center>
+          <img
+            src="{%static 'img/col/DG LOGO black fade.png'%} "
+            height="100px"
+            width="100px"
+          />
+        
+        <h2>Register as Groomer</h2>
+      </center>
+        <form class="form" action="#"  method="POST">
+          {% csrf_token %}  
+          <label>Name</label>
+          <input type="text" name="days" class="form-control">
+          <label>Email-ID</label>
+          <input type="email" name="days" class="form-control">
+          <label>Contact Number</label>
+          <input type="text" name="days" class="form-control">
+          <label>Location</label><br>
+          <input type="text" name="days" class="form-control">
+          <label>Working Hours</label><br>
+          <input type="text" name="days" class="form-control">
+          <label>Door Step Delivery</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+            Available
+            </label>
+            
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+             Not Available
+            </label>
+          </div>
+          <br>
+          <label>Pre Work Picture</label><br>
+          <input type="file" name="days"><br>
+          
+          <center>  <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+       
+      </div>
+    </div>
+{%endblock%}
